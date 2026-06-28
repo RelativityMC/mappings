@@ -12,7 +12,7 @@ import me.kcra.takenaka.core.mapping.ancestry.impl.collectNamespaceIds
 import me.kcra.takenaka.core.mapping.ancestry.impl.computeIndices
 import me.kcra.takenaka.core.mapping.resolve.impl.*
 import me.kcra.takenaka.generator.common.provider.impl.*
-import me.kcra.takenaka.generator.web.JDK_21_BASE_URL
+import me.kcra.takenaka.generator.web.JDK_25_BASE_URL
 import me.kcra.takenaka.generator.web.WebGenerator
 import me.kcra.takenaka.generator.web.buildWebConfig
 import me.kcra.takenaka.generator.web.modularClassSearchIndexOf
@@ -345,18 +345,18 @@ val webConfig = buildWebConfig {
 
     transformer(CSSInliningTransformer("cdn.jsdelivr.net"))
     transformer(MinifyingTransformer())
-    index(modularClassSearchIndexOf(JDK_21_BASE_URL))
+    index(modularClassSearchIndexOf(JDK_25_BASE_URL))
 
     replaceCraftBukkitVersions("spigot")
     friendlyNamespaces("modern-yarn", "modern-intermediary", "yarn", "intermediary", "mojang", "spigot", "searge", "source")
-    namespace("mojang", "Mojang", "#4D7C0F", AbstractMojangMappingResolver.META_LICENSE)
+    // namespace("mojang", "Mojang", "#4D7C0F", AbstractMojangMappingResolver.META_LICENSE)
     namespace("spigot", "Spigot", "#CA8A04", AbstractSpigotMappingResolver.META_LICENSE)
     namespace("yarn", "Yarn", "#626262", YarnMappingResolver.META_LICENSE)
     namespace("searge", "Searge", "#B91C1C", SeargeMappingResolver.META_LICENSE)
     namespace("intermediary", "Intermediary", "#0369A1", IntermediaryMappingResolver.META_LICENSE)
     namespace("modern-intermediary", "Modern Intermediary", "#0369A1", ModernIntermediaryMappingResolver.META_LICENSE)
     namespace("modern-yarn", "Modern Yarn", "#626262", ModernYarnMappingResolver.META_LICENSE)
-    namespace("source", "Obfuscated", "#581C87")
+    namespace("source", "Official", "#581C87")
 }
 
 val generator = WebGenerator(webWorkspace, webConfig)
