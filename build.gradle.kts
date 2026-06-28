@@ -102,10 +102,16 @@ val bundleWorkspace by lazy {
     }
 }
 
-val manifest = versionManifestOf()
+val mojangManifest = versionManifestOf()
+val experimentalManifest = fabricVersionManifestOf()
+val manifest = VersionManifest(
+    mojangManifest.latest,
+    mojangManifest.versions + experimentalManifest.versions
+)
 //val yarnProvider = YarnMetadataProvider(sharedCacheWorkspace)
 val modernYarnProvider = ModernYarnMetadataProvider(sharedCacheWorkspace)
 val mappingConfig = buildMappingConfig {
+    version("1.21.11_unobfuscated")
     version(
         manifest
             .range("26.1", null) { // change me
