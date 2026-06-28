@@ -204,7 +204,7 @@ val analyzer = MappingAnalyzerImpl(
 
 val ancestryIndexNs = "takenaka_node"
 //val ancestryNamespaces = listOf("mojang", "spigot", "searge", "intermediary")
-val ancestryNamespaces = listOf("modern-intermediary")
+val ancestryNamespaces = listOf("modern-intermediary", "mojang")
 
 val ancestryProvider = CachedAncestryProvider(SimpleAncestryProvider(null, ancestryNamespaces))
 
