@@ -120,6 +120,16 @@ val mappingConfig = buildMappingConfig {
             }
             .map(Version::id)
     )
+
+    for ((index, version) in manifest.versions.withIndex()) {
+        if (index == 0) continue
+        if (version.type != Version.Type.RELEASE) {
+            version(version.id)
+        } else {
+            break
+        }
+    }
+
     if (manifest.latest.snapshot != manifest.latest.release) {
         version(manifest.latest.snapshot)
     }
